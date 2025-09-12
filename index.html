@@ -36,6 +36,8 @@ header {
   width:30px;
   height:25px;
   cursor:pointer;
+  position: relative;
+  z-index:101;
 }
 .menu-toggle span {
   display:block;
@@ -54,6 +56,7 @@ nav {
   background: rgba(0,0,0,0.9);
   padding:10px 20px;
   border-radius:10px;
+  z-index:1000;
 }
 #menu-checkbox:checked + .menu-toggle + nav { display:block; }
 nav a { display:block; margin:10px 0; color:white; text-decoration:none; }
@@ -62,7 +65,7 @@ nav a:hover { text-decoration:underline; }
 /* セクション */
 section, footer {
   max-width:800px;
-  margin:100px auto 40px auto; /* ヘッダー固定分マージン上に余裕 */
+  margin:100px auto 40px auto;
   padding:20px;
   background: rgba(255,255,255,0.05);
   border-radius:15px;
