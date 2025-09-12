@@ -7,55 +7,39 @@
 <style>
 body {
   font-family:"Segoe UI",sans-serif;
-  margin:0;
-  padding:0;
+  margin:0; padding:0;
   background:linear-gradient(135deg,#1e1f29,#3a3b4f);
-  color:white;
-  text-align:center;
+  color:white; text-align:center;
 }
 
 /* ヘッダー固定 */
 header {
   position: fixed;
-  top:0;
-  left:0;
-  width:100%;
+  top:0; left:0; width:100%;
   background: rgba(0,0,0,0.7);
   padding:15px 20px;
   z-index:1000;
   display:flex;
-  justify-content:flex-end;
+  justify-content:flex-end; 
   align-items:center;
 }
 
 /* ハンバーガーメニュー */
 .menu-toggle {
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  width:30px;
-  height:25px;
-  cursor:pointer;
-  position: relative;
-  z-index:101;
+  display:flex; flex-direction:column; justify-content:space-between;
+  width:30px; height:25px;
+  cursor:pointer; position: relative; z-index:101;
 }
-.menu-toggle span {
-  display:block;
-  height:4px;
-  background:white;
-  border-radius:2px;
-}
+.menu-toggle span { display:block; height:4px; background:white; border-radius:2px; }
 
 /* メニュー表示制御 */
 #menu-checkbox { display:none; }
 nav {
   display:none;
   position:absolute;
-  top:60px;
-  right:20px;
+  top:60px; right:0;
   background: rgba(0,0,0,0.9);
-  padding:10px 20px;
-  border-radius:10px;
+  padding:10px 20px; border-radius:10px;
   z-index:1000;
 }
 #menu-checkbox:checked + .menu-toggle + nav { display:block; }
@@ -69,34 +53,22 @@ section, footer {
   padding:20px;
   background: rgba(255,255,255,0.05);
   border-radius:15px;
-  opacity:0;
-  transform:translateY(20px);
+  opacity:0; transform:translateY(20px);
   transition: all 0.8s ease-out;
 }
 
 h2 { border-bottom:2px solid #00d4ff; padding-bottom:10px; margin-bottom:20px; }
-
 ul { list-style:none; padding:0; }
 ul li { margin:10px 0; font-size:1.1em; }
-
 a { color:#00d4ff; text-decoration:none; }
 a:hover { text-decoration: underline; }
 
 .email-button {
-  padding:10px 20px;
-  background:#00d4ff;
-  color:white;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:bold;
-  display:inline-block;
-  margin-top:10px;
-  transition: all 0.3s ease;
+  padding:10px 20px; background:#00d4ff; color:white;
+  border-radius:8px; text-decoration:none; font-weight:bold;
+  display:inline-block; margin-top:10px; transition: all 0.3s ease;
 }
-.email-button:hover {
-  background:#00ffff;
-  box-shadow:0 0 10px #00d4ff,0 0 20px #00d4ff;
-}
+.email-button:hover { background:#00ffff; box-shadow:0 0 10px #00d4ff,0 0 20px #00d4ff; }
 
 /* フェードイン */
 .fade { opacity:0; transform:translateY(20px); transition: all 0.8s ease-out; }
@@ -109,11 +81,8 @@ a:hover { text-decoration: underline; }
 <header>
   <input type="checkbox" id="menu-checkbox">
   <label class="menu-toggle" for="menu-checkbox">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </label>
-
   <nav>
     <a href="index.html">トップページ</a>
     <a href="contact.html">お問い合わせ</a>
@@ -122,7 +91,7 @@ a:hover { text-decoration: underline; }
 
 <section class="fade" id="profile">
   <h2>プロフィール</h2>
-  <p>こんにちは！あいこにさんです。機種はSwitch、PS4Proです！性別は男の子にゃ。Discordのフレンド申請はご自由に！ゲーム歴: Minecraft7年 / Fortnite3年 / PSO2NGS4年 / FF14 不明</p>
+  <p>こんにちは！あいこにさんです。機種はSwitch、PS4Proです！性別は男の子。Discordのフレンド申請はご自由に！ゲーム歴: Minecraft7年 / Fortnite3年 / PSO2NGS4年 / FF14 不明</p>
 </section>
 
 <section class="fade" id="games">
@@ -136,8 +105,8 @@ a:hover { text-decoration: underline; }
   <h2>SNSのリンク</h2>
   <p>
     <a href="https://discord.gg/KF8GKXkS" target="_blank">Discord</a> | 
-    <a href="https://x.com/aikoni3435?t=4nqKi5_2A3BzT_b1nnePkQ&s=09" target="_blank">Twitter</a> |
-    <a href="https://youtube.com/@aikonikku?si=fuaCc-bLq2gs2Fxu" target="_blank">YouTube</a>
+    <a href="https://x.com/aikoni3435" target="_blank">Twitter</a> |
+    <a href="https://youtube.com/@aikonikku" target="_blank">YouTube</a>
   </p>
 </section>
 
