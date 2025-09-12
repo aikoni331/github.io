@@ -10,7 +10,7 @@ header { position: fixed; top:0; left:0; width:100%; background: rgba(0,0,0,0.7)
 .menu-toggle { display:flex; flex-direction:column; justify-content:space-between; width:30px; height:25px; cursor:pointer; position:relative; z-index:101; }
 .menu-toggle span { display:block; height:4px; background:white; border-radius:2px; }
 #menu-checkbox { display:none; }
-nav { display:none; position:absolute; top:60px; right:20px; background: rgba(0,0,0,0.9); padding:10px 20px; border-radius:10px; z-index:1000; }
+nav { display:none; position:absolute; top:60px; right:0; background: rgba(0,0,0,0.9); padding:10px 20px; border-radius:10px; z-index:1000; }
 #menu-checkbox:checked + .menu-toggle + nav { display:block; }
 nav a { display:block; margin:10px 0; color:white; text-decoration:none; }
 nav a:hover { text-decoration:underline; }
@@ -29,9 +29,7 @@ a:hover { text-decoration: underline; }
 <header>
   <input type="checkbox" id="menu-checkbox">
   <label class="menu-toggle" for="menu-checkbox">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </label>
   <nav>
     <a href="index.html">トップページ</a>
@@ -39,4 +37,38 @@ a:hover { text-decoration: underline; }
   </nav>
 </header>
 
-<section class
+<section class="fade">
+  <h2>メールでお問い合わせ</h2>
+  <p>
+    <a href="mailto:aikonic.333.GitHub@gmail.com" class="email-button">本人にメールを送る</a>
+  </p>
+</section>
+
+<section class="fade">
+  <h2>お問い合わせフォーム</h2>
+  <p>以下のフォームからもお問い合わせできます：</p>
+  <p>
+    <a href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__WBowfRUNENEVko1VjVGVVpZNDMwU05PVk8xUjRVQi4u&route=shorturl" target="_blank" class="email-button">ZRSグループのお問い合わせフォーム</a>
+  </p>
+</section>
+
+<footer class="fade">
+  <p>&copy; 2025 ZRSグループ </p>
+</footer>
+
+<script>
+const faders = document.querySelectorAll('.fade');
+const appearOptions = { threshold:0.1, rootMargin:"0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, observer){
+  entries.forEach((entry,index)=>{
+    if(entry.isIntersecting){
+      setTimeout(()=>{ entry.target.classList.add('show'); }, index*200);
+      observer.unobserve(entry.target);
+    }
+  });
+}, appearOptions);
+faders.forEach(fader => { appearOnScroll.observe(fader); });
+</script>
+
+</body>
+</html>
