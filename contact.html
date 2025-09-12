@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>お問い合わせ | あいこにさん</title>
+<title>あいこにさん | トップページ</title>
 <style>
 body {
   font-family:"Segoe UI",sans-serif;
@@ -27,7 +27,7 @@ header {
 .menu-toggle {
   display:flex; flex-direction:column; justify-content:space-between;
   width:30px; height:25px; cursor:pointer; z-index:101;
-  margin-right:10px;
+  margin-right:15px; /* 右端から少し内側 */
 }
 .menu-toggle span { display:block; height:4px; background:white; border-radius:2px; }
 
@@ -36,8 +36,8 @@ header {
 nav {
   display:none;
   position:absolute;
-  top:70px;  /* header の高さに合わせる */
-  right:10px; /* 画面端から少し内側 */
+  top:70px;
+  right:10px;
   background: rgba(0,0,0,0.9);
   padding:10px 20px;
   border-radius:10px;
@@ -46,11 +46,8 @@ nav {
 }
 #menu-checkbox:checked + .menu-toggle + nav { display:block; }
 nav a {
-  display:block;
-  margin:10px 0;
-  color:white;
-  text-decoration:none;
-  word-break: break-word; /* 長いリンクも折り返す */
+  display:block; margin:10px 0; color:white; text-decoration:none;
+  word-break: break-word;
 }
 nav a:hover { text-decoration:underline; }
 
@@ -80,7 +77,16 @@ a:hover { text-decoration: underline; }
 .fade.show { opacity:1 !important; transform:translateY(0) !important; }
 
 /* レスポンシブ */
-@media (max-width:600px){
+@media (max-width: 768px) {
+  body { font-size:15px; }
+  header { height:65px; padding:12px 18px; }
+  .menu-toggle { width:35px; height:28px; margin-right:12px; }
+  nav { width:200px; right:10px; }
+}
+@media (max-width: 480px) {
+  body { font-size:14px; }
+  header { height:60px; padding:10px 15px; }
+  .menu-toggle { width:40px; height:30px; margin-right:10px; }
   nav { width:80%; right:10%; left:10%; }
 }
 </style>
@@ -99,18 +105,29 @@ a:hover { text-decoration: underline; }
 </header>
 
 <section class="fade">
-  <h2>メールでお問い合わせ</h2>
+  <h2>プロフィール</h2>
+  <p>こんにちは！あいこにさんです。Switch、PS4Proで遊んでいます。ゲーム歴: Minecraft7年 / Fortnite3年 / PSO2NGS4年 / FF14 不明</p>
+</section>
+
+<section class="fade">
+  <h2>やってるゲーム</h2>
+  <ul>
+    <li>🎮 Fortnite / FF14 / NGS / Minecraft</li>
+  </ul>
+</section>
+
+<section class="fade">
+  <h2>SNSのリンク</h2>
   <p>
-    <a href="mailto:aikonic.333.GitHub@gmail.com" class="email-button">本人にメールを送る</a>
+    <a href="https://discord.gg/KF8GKXkS" target="_blank">Discord</a> | 
+    <a href="https://x.com/aikoni3435?t=4nqKi5_2A3BzT_b1nnePkQ&s=09" target="_blank">Twitter</a> |
+    <a href="https://youtube.com/@aikonikku?si=fuaCc-bLq2gs2Fxu" target="_blank">YouTube</a>
   </p>
 </section>
 
 <section class="fade">
-  <h2>お問い合わせフォーム</h2>
-  <p>以下のフォームからもお問い合わせできます：</p>
-  <p>
-    <a href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__WBowfRUNENEVko1VjVGVVpZNDMwU05PVk8xUjRVQi4u&route=shorturl" target="_blank" class="email-button">ZRSグループのお問い合わせフォーム</a>
-  </p>
+  <h2>所属グループ</h2>
+  <p>現在所属しているグループは「ZRSグループ」です。</p>
 </section>
 
 <footer class="fade">
