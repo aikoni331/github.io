@@ -16,6 +16,9 @@
     header {
       padding: 50px 20px;
       background: rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
     }
     header h1 {
       font-size: 2.5em;
@@ -27,7 +30,17 @@
       padding: 20px;
       background: rgba(255,255,255,0.05);
       border-radius: 15px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
     }
+    section:nth-of-type(1) { animation-delay: 0.2s; }
+    section:nth-of-type(2) { animation-delay: 0.4s; }
+    section:nth-of-type(3) { animation-delay: 0.6s; }
+    section:nth-of-type(4) { animation-delay: 0.8s; }
+    section:nth-of-type(5) { animation-delay: 1s; }
+    section:nth-of-type(6) { animation-delay: 1.2s; }
+
     h2 {
       border-bottom: 2px solid #00d4ff;
       padding-bottom: 10px;
@@ -46,6 +59,10 @@
       padding: 20px;
       background: rgba(0,0,0,0.4);
       font-size: 0.9em;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+      animation-delay: 1.4s;
     }
     a {
       color: #00d4ff;
@@ -54,6 +71,14 @@
     a:hover {
       text-decoration: underline;
     }
+    /* フェードインアニメーション */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* メールボタン用 */
     .email-button {
       padding: 10px 20px;
       background: #00d4ff;
@@ -63,15 +88,17 @@
       font-weight: bold;
       display: inline-block;
       margin-top: 10px;
+      transition: all 0.3s ease;
     }
     .email-button:hover {
-      background: #009adf;
+      background: #00ffff;
+      box-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>あいこにさん</h1>
+    <h1>あいこにさん自己紹介など</h1>
   </header>
 
   <section>
@@ -97,17 +124,17 @@
 
   <section>
     <h2>所属グループ</h2>
-    <p>現在所属しているグループは「ZRSグループ」　です。 </p>
+    <p>現在所属しているグループは「ZRSグループ」です。</p>
   </section>
 
   <section>
     <h2>お問い合わせ</h2>
     <p>
       <a href="mailto:aikonic.333.GitHub@gmail.com" class="email-button">
-        メールを送る
+        本人にメールを送る
       </a>
     </p>
-    <p>または、以下のZRSフォームからもお問い合わせいただけます：</p>
+    <p>または、以下のフォームからもお問い合わせいただけます：</p>
     <p>
       <a href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__WBowfRUNENEVko1VjVGVVpZNDMwU05PVk8xUjRVQi4u&route=shorturl" target="_blank" class="email-button">
         ZRSグループのお問い合わせフォーム
@@ -116,7 +143,7 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 ZRS グループ</p>
+    <p>&copy; 2025 ZRSグループ </p>
   </footer>
 </body>
 </html>
