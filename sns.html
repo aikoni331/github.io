@@ -3,30 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SNS</title>
-  <link rel="stylesheet" href="style.css">
+  <title>あいこにさん | SNS</title>
+  <style>
+    body { font-family: "Segoe UI", sans-serif; margin: 0; padding: 0; background: linear-gradient(135deg,#1e1f29,#3a3b4f); color: white; text-align: center; }
+    .menu-btn { position: fixed; top: 15px; left: 15px; z-index: 1001; cursor: pointer; width: 30px; height: 22px; display: flex; flex-direction: column; justify-content: space-between; }
+    .menu-btn span { display: block; height: 4px; background: white; border-radius: 2px; transition: 0.3s; }
+    .menu { position: fixed; top: 0; left: -250px; width: 250px; height: 100%; background: rgba(0,0,0,0.9); padding-top: 60px; transition: 0.3s; z-index: 1000; }
+    .menu a { display: block; padding: 15px; color: white; text-decoration: none; border-bottom: 1px solid #333; }
+    .menu a:hover { background: #00d4ff; color: black; }
+    .menu.active { left: 0; }
+
+    section { max-width: 800px; margin: 80px auto; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 15px; opacity: 0; transform: translateY(20px); animation: fadeInUp 1s forwards; }
+    section:nth-of-type(1) { animation-delay: 0.2s; }
+
+    h2 { border-bottom: 2px solid #00d4ff; padding-bottom: 10px; margin-bottom: 20px; }
+    p a { color: #00d4ff; text-decoration: none; font-weight: bold; }
+    p a:hover { text-decoration: underline; }
+
+    footer { margin-top: 50px; padding: 20px; background: rgba(0,0,0,0.4); font-size: 0.9em; opacity: 0; transform: translateY(20px); animation: fadeInUp 1s forwards; animation-delay: 0.8s; }
+
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+  </style>
 </head>
 <body>
-  <!-- ハンバーガーメニュー -->
-  <div class="hamburger-menu" id="hamburgerMenu">
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-    <nav class="menu" id="menu">
-      <a href="index.html">トップページ</a>
-      <a href="activity.html">活動履歴</a>
-      <a href="contact.html">お問い合わせ</a>
-      <a href="sns.html">SNS</a>
-    </nav>
-  </div>
+  <div class="menu-btn" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  <nav class="menu" id="menu">
+    <a href="index.html">トップページ</a>
+    <a href="sns.html">SNS</a>
+    <a href="contact.html">お問い合わせ</a>
+  </nav>
 
-  <main>
-    <h1>SNSリンク</h1>
-    <ul>
-      <li><a href="https://twitter.com/〇〇" target="_blank">Twitter</a></li>
-      <li><a href="https://youtube.com/〇〇" target="_blank">YouTube</a></li>
-      <li><a href="https://instagram.com/〇〇" target="_blank">Instagram</a></li>
-    </ul>
-  </main>
+  <section>
+    <h2>SNSリンク</h2>
+    <p><a href="https://discord.gg/KF8GKXkS" target="_blank">Discord</a></p>
+    <p><a href="https://x.com/aikoni3435" target="_blank">Twitter</a></p>
+    <p><a href="https://youtube.com/@aikonikku" target="_blank">YouTube</a></p>
+  </section>
 
-  <script src="script.js"></script>
+  <footer>
+    <p>&copy; 2025 あいこにさん</p>
+  </footer>
+
+  <script>
+    function toggleMenu() { document.getElementById("menu").classList.toggle("active"); }
+  </script>
 </body>
 </html>
