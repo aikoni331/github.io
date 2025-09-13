@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>自己紹介 | あいこにさん</title>
+  <title>あいこにさん | トップページ</title>
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
@@ -13,64 +13,56 @@
       color: white;
       text-align: center;
     }
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.7);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      z-index: 1000;
-    }
-    header h1 {
-      font-size: 1.5em;
-      margin: 0;
-    }
+
     /* ハンバーガーメニュー */
-    .menu-toggle {
-      font-size: 1.8em;
+    .menu-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      z-index: 1001;
       cursor: pointer;
-      color: #00d4ff;
-      z-index: 1100;
+      width: 30px;
+      height: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    nav {
+    .menu-btn span {
+      display: block;
+      height: 4px;
+      background: white;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    .menu {
       position: fixed;
       top: 0;
-      right: -250px;
+      left: -250px;
       width: 250px;
       height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      transition: right 0.3s ease;
+      background: rgba(0,0,0,0.9);
       padding-top: 60px;
-      text-align: left;
-      z-index: 1050;
+      transition: 0.3s;
+      z-index: 1000;
     }
-    nav.active {
-      right: 0;
-    }
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    nav ul li {
-      padding: 15px 20px;
-    }
-    nav ul li a {
-      color: #00d4ff;
+    .menu a {
+      display: block;
+      padding: 15px;
+      color: white;
       text-decoration: none;
-      font-size: 1.2em;
+      border-bottom: 1px solid #333;
     }
-    nav ul li a:hover {
-      text-decoration: underline;
+    .menu a:hover {
+      background: #00d4ff;
+      color: black;
     }
-    /* セクション */
+    .menu.active {
+      left: 0;
+    }
+
     section {
       max-width: 800px;
-      margin: 100px auto 40px;
+      margin: 80px auto;
       padding: 20px;
       background: rgba(255,255,255,0.05);
       border-radius: 15px;
@@ -81,11 +73,22 @@
     section:nth-of-type(1) { animation-delay: 0.2s; }
     section:nth-of-type(2) { animation-delay: 0.4s; }
     section:nth-of-type(3) { animation-delay: 0.6s; }
+
     h2 {
       border-bottom: 2px solid #00d4ff;
       padding-bottom: 10px;
       margin-bottom: 20px;
     }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      margin: 10px 0;
+      font-size: 1.1em;
+    }
+
     footer {
       margin-top: 50px;
       padding: 20px;
@@ -94,9 +97,9 @@
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 1s forwards;
-      animation-delay: 1s;
+      animation-delay: 0.8s;
     }
-    /* アニメーション */
+
     @keyframes fadeInUp {
       to {
         opacity: 1;
@@ -106,28 +109,33 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>あいこにさん</h1>
-    <div class="menu-toggle">☰</div>
-  </header>
-
-  <nav id="menu">
-    <ul>
-      <li><a href="index.html">トップページ</a></li>
-      <li><a href="sns.html">SNS</a></li>
-      <li><a href="contact.html">お問い合わせ</a></li>
-    </ul>
+  <!-- ハンバーガーメニュー -->
+  <div class="menu-btn" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <nav class="menu" id="menu">
+    <a href="index.html">トップページ</a>
+    <a href="sns.html">SNS</a>
+    <a href="contact.html">お問い合わせ</a>
   </nav>
 
   <section>
     <h2>プロフィール</h2>
-    <p>こんにちは！あいこにさんです。機種はSwitch、PS4Proです！性別は男の子にゃ。Discordのフレンド申請はご自由に！<br>
-    ゲーム歴: Minecraft7年 / Fortnite3年 / PSO2NGS4年 / FF14 不明</p>
+    <p>こんにちは！あいこにさんです。<br>
+    機種はSwitch、PS4Proです！性別は男の子。<br>
+    Discordのフレンド申請はご自由に！</p>
   </section>
 
   <section>
     <h2>やってるゲーム</h2>
-    <p>🎮 Fortnite / FF14 / NGS / Minecraft</p>
+    <ul>
+      <li>🎮 Fortnite</li>
+      <li>🎮 FF14</li>
+      <li>🎮 NGS</li>
+      <li>🎮 Minecraft</li>
+    </ul>
   </section>
 
   <section>
@@ -140,11 +148,9 @@
   </footer>
 
   <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const menu = document.getElementById('menu');
-    menuToggle.addEventListener('click', () => {
-      menu.classList.toggle('active');
-    });
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
+    }
   </script>
 </body>
 </html>
