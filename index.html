@@ -52,13 +52,8 @@
       text-decoration: none;
       border-bottom: 1px solid #333;
     }
-    .menu a:hover {
-      background: #00d4ff;
-      color: black;
-    }
-    .menu.active {
-      left: 0;
-    }
+    .menu a:hover { background: #00d4ff; color: black; }
+    .menu.active { left: 0; }
 
     section {
       max-width: 800px;
@@ -89,6 +84,9 @@
       font-size: 1.1em;
     }
 
+    /* Cookie挨拶用 */
+    #greeting { font-size: 1.2em; margin-bottom: 15px; }
+
     footer {
       margin-top: 50px;
       padding: 20px;
@@ -101,19 +99,14 @@
     }
 
     @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <!-- ハンバーガーメニュー -->
   <div class="menu-btn" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </div>
   <nav class="menu" id="menu">
     <a href="index.html">トップページ</a>
@@ -121,11 +114,17 @@
     <a href="contact.html">お問い合わせ</a>
   </nav>
 
+  <!-- 挨拶と名前入力 -->
+  <section>
+    <h2>ようこそ！</h2>
+    <p id="greeting">初めて来た方は名前を入力してください</p>
+    <input type="text" id="username" placeholder="名前を入力">
+    <button onclick="saveName()">保存</button>
+  </section>
+
   <section>
     <h2>プロフィール</h2>
-    <p>こんにちは！あいこにさんです。<br>
-    機種はSwitch、PS4Proです！性別は男の子。<br>
-    Discordのフレンド申請はご自由に！</p>
+    <p>こんにちは！あいこにさんです。<br>機種はSwitch、PS4Proです！性別は男の子。<br>Discordのフレンド申請はご自由に！</p>
   </section>
 
   <section>
@@ -148,9 +147,45 @@
   </footer>
 
   <script>
-    function toggleMenu() {
-      document.getElementById("menu").classList.toggle("active");
+    // ハンバーガーメニュー
+    function toggleMenu() { document.getElementById("menu").classList.toggle("active"); }
+
+    // Cookie関数
+    function setCookie(name, value, days) {
+      const d = new Date();
+      d.setTime(d.getTime() + (days*24*60*60*1000));
+      document.cookie = name + "=" + encodeURIComponent(value) + ";expires=" + d.toUTCString() + ";path=/";
     }
+
+    function getCookie(name) {
+      const cname = name + "=";
+      const decoded = decodeURIComponent(document.cookie);
+      const ca = decoded.split(';');
+      for(let c of ca) {
+        c = c.trim();
+        if(c.indexOf(cname) == 0) return c.substring(cname.length, c.length);
+      }
+      return "";
+    }
+
+    function saveName() {
+      const name = document.getElementById("username").value;
+      if(name) {
+        setCookie("visitorName", name, 7);
+        showGreeting();
+      }
+    }
+
+    function showGreeting() {
+      const name = getCookie("visitorName");
+      const greeting = document.getElementById("greeting");
+      if(name) {
+        greeting.textContent = name + "さん、ようこそ！";
+        document.getElementById("username").style.display = "none";
+      }
+    }
+
+    window.onload = showGreeting;
   </script>
 </body>
 </html>
