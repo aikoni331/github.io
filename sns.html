@@ -144,11 +144,16 @@
     </div>
   </section>
 
+  <!-- ▼ 自動で年が変わるフッター ▼ -->
   <footer>
-    <p>&copy; 2025 ZRSグループ</p>
+    <p>&copy; <span id="year"></span> ZRSグループ</p>
   </footer>
 
   <script>
+    // 現在の年を取得して表示
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // メニュー開閉
     function toggleMenu() {
       document.getElementById("menu").classList.toggle("active");
     }
