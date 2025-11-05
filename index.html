@@ -144,10 +144,18 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 ZRSグループ</p>
-  </footer>
+  <p>&copy; <span id="year"></span> ZRSグループ</p>
+</footer>
 
-  <script>
+<script>
+  // 年を自動で入れる
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // メニュー開閉機能（元のやつ）
+  function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+  }
+</script>
     function toggleMenu() {
       document.getElementById("menu").classList.toggle("active");
     }
