@@ -143,19 +143,16 @@
     <p>現在所属しているグループは「ZRSグループ」です。</p>
   </section>
 
+  <!-- ▼ 自動で年が変わるフッター ▼ -->
   <footer>
-  <p>&copy; <span id="year"></span> ZRSグループ</p>
-</footer>
+    <p>&copy; <span id="year"></span> ZRSグループ</p>
+  </footer>
 
-<script>
-  // 年を自動で入れる
-  document.getElementById("year").textContent = new Date().getFullYear();
+  <script>
+    // 年を自動で更新
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  // メニュー開閉機能（元のやつ）
-  function toggleMenu() {
-    document.getElementById("menu").classList.toggle("active");
-  }
-</script>
+    // メニュー開閉機能
     function toggleMenu() {
       document.getElementById("menu").classList.toggle("active");
     }
