@@ -38,16 +38,21 @@
     <p><a href="mailto:aikonic.333.GitHub@gmail.com" class="email-button">本人にメールを送る</a></p>
     <p>または以下のフォームから：</p>
     <p><a href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__WBowfRUNENEVko1VjVGVVpZNDMwU05PVk8xUjRVQi4u&route=shorturl" target="_blank" class="email-button">ZRSグループお問い合わせ</a></p>
- <p>または案件等のお問い合わせ：</p>
+    <p>または案件等のお問い合わせ：</p>
     <p><a href="https://forms.cloud.microsoft/r/9Pyd24MDgw?origin=lprLink" target="_blank" class="email-button">その他のお問い合わせ</a></p>
   </section>
 
   <footer>
-    <p>&copy; 2025 ZRSグループ</p>
+    <p>&copy; <span id="year"></span> ZRSグループ</p>
   </footer>
 
   <script>
-    function toggleMenu() { document.getElementById("menu").classList.toggle("active"); }
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
+    }
+
+    // 年数を自動で表示
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
