@@ -13,11 +13,13 @@
       color: white;
       text-align: center;
     }
+
+    /* ハンバーガーメニュー */
     .menu-btn {
       position: fixed;
       top: 15px;
       left: 15px;
-      z-index: 1001;
+      z-index: 1002;
       cursor: pointer;
       width: 30px;
       height: 22px;
@@ -32,6 +34,18 @@
       border-radius: 2px;
       transition: 0.3s;
     }
+
+    /* バツ状態のアニメーション */
+    .menu-btn.active span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-btn.active span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
     .menu {
       position: fixed;
       top: 0;
@@ -41,7 +55,7 @@
       background: rgba(0,0,0,0.9);
       padding-top: 60px;
       transition: 0.3s;
-      z-index: 1000;
+      z-index: 1001;
     }
     .menu a {
       display: block;
@@ -57,6 +71,22 @@
     .menu.active {
       left: 0;
     }
+
+    /* メニュー外クリック用オーバーレイ */
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s;
+    }
+    .menu-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
     section {
       max-width: 800px;
       margin: 80px auto;
@@ -83,6 +113,7 @@
     p a:hover {
       text-decoration: underline;
     }
+
     footer {
       margin-top: 50px;
       padding: 20px;
@@ -93,9 +124,11 @@
       animation: fadeInUp 1s forwards;
       animation-delay: 0.8s;
     }
+
     @keyframes fadeInUp {
       to { opacity: 1; transform: translateY(0); }
     }
+
     /* 埋め込み動画のスタイル */
     .video-container {
       position: relative;
@@ -117,14 +150,20 @@
   </style>
 </head>
 <body>
-  <div class="menu-btn" onclick="toggleMenu()">
+  <!-- ハンバーガーメニュー -->
+  <div class="menu-btn" id="menuBtn">
     <span></span><span></span><span></span>
   </div>
+
+  <!-- メニュー本体 -->
   <nav class="menu" id="menu">
     <a href="index.html">トップページ</a>
     <a href="sns.html">SNS</a>
     <a href="contact.html">お問い合わせ</a>
   </nav>
+
+  <!-- メニュー外クリック用オーバーレイ -->
+  <div class="menu-overlay" id="menuOverlay"></div>
 
   <section>
     <h2>SNSリンク</h2>
@@ -150,13 +189,29 @@
   </footer>
 
   <script>
-    // 現在の年を取得して表示
-    document.getElementById("year").textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById("menuBtn");
+    const menu = document.getElementById("menu");
+    const menuOverlay = document.getElementById("menuOverlay");
 
-    // メニュー開閉
     function toggleMenu() {
-      document.getElementById("menu").classList.toggle("active");
+      menu.classList.toggle("active");
+      menuBtn.classList.toggle("active");
+      menuOverlay.classList.toggle("active");
     }
-  </script>
-</body>
-</html>
+
+    // メニューボタンで開閉
+    menuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    // オーバーレイクリックで閉じる
+    menuOverlay.addEventListener("click", () => {
+      if (menu.classList.contains("active")) {
+        toggleMenu();
+      }
+    });
+
+    // メニュー内リンククリックで閉じる
+    menu.addEventListener("click", (e) => {
+      if (e.targ
