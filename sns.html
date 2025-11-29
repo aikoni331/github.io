@@ -214,4 +214,13 @@
 
     // メニュー内リンククリックで閉じる
     menu.addEventListener("click", (e) => {
-      if (e.targ
+      if (e.target.tagName === "A") {
+        toggleMenu();
+      }
+    });
+
+    // 現在の年を取得して表示
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
