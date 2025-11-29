@@ -19,7 +19,7 @@
       position: fixed;
       top: 15px;
       left: 15px;
-      z-index: 1001;
+      z-index: 1002; /* メニューより前 */
       cursor: pointer;
       width: 30px;
       height: 22px;
@@ -34,6 +34,18 @@
       border-radius: 2px;
       transition: 0.3s;
     }
+
+    /* バツ状態のアニメーション */
+    .menu-btn.active span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-btn.active span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
     .menu {
       position: fixed;
       top: 0;
@@ -43,7 +55,7 @@
       background: rgba(0,0,0,0.9);
       padding-top: 60px;
       transition: 0.3s;
-      z-index: 1000;
+      z-index: 1001;
     }
     .menu a {
       display: block;
@@ -58,6 +70,21 @@
     }
     .menu.active {
       left: 0;
+    }
+
+    /* メニュー外クリック用の黒いオーバーレイ */
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s;
+    }
+    .menu-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     section {
@@ -110,16 +137,21 @@
 </head>
 <body>
   <!-- ハンバーガーメニュー -->
-  <div class="menu-btn" onclick="toggleMenu()">
+  <div class="menu-btn" id="menuBtn">
     <span></span>
     <span></span>
     <span></span>
   </div>
+
+  <!-- メニュー本体 -->
   <nav class="menu" id="menu">
     <a href="index.html">トップページ</a>
     <a href="sns.html">SNS</a>
     <a href="contact.html">お問い合わせ</a>
   </nav>
+
+  <!-- メニュー外クリック用オーバーレイ -->
+  <div class="menu-overlay" id="menuOverlay"></div>
 
   <section>
     <h2>プロフィール</h2>
@@ -153,10 +185,35 @@
     // 年を自動で更新
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // メニュー開閉機能
+    const menuBtn = document.getElementById("menuBtn");
+    const menu = document.getElementById("menu");
+    const menuOverlay = document.getElementById("menuOverlay");
+
     function toggleMenu() {
-      document.getElementById("menu").classList.toggle("active");
+      menu.classList.toggle("active");
+      menuBtn.classList.toggle("active");
+      menuOverlay.classList.toggle("active");
     }
+
+    // メニューボタンで開閉
+    menuBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // クリックが外側処理に伝わらないように
+      toggleMenu();
+    });
+
+    // オーバーレイをクリックしたら閉じる
+    menuOverlay.addEventListener("click", () => {
+      if (menu.classList.contains("active")) {
+        toggleMenu();
+      }
+    });
+
+    // メニュー内リンクを押したら閉じる（任意だけど便利）
+    menu.addEventListener("click", (e) => {
+      if (e.target.tagName === "A") {
+        toggleMenu();
+      }
+    });
   </script>
 </body>
 </html>
